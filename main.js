@@ -327,35 +327,6 @@ function constraints(filePath)
 
 					
 					
-					if( child.left.type == 'Identifier' && child.left.name == "area") {
-						var expression = buf.substring(child.range[0], child.range[1]);
-						var rightHand = buf.substring(child.right.range[0], child.right.range[1])
-
-						if(typeof(rightHand) === "string") {
-							functionConstraints[funcName].constraints.push(
-								new Constraint(
-									{
-										ident: params[0],
-										value: "'"+rightHand.substring(1,4)+"-999-9999'",
-										funcName: funcName,
-										kind: "string",
-										operator : child.operator,
-										expression: expression
-									}));
-							functionConstraints[funcName].constraints.push(
-								new Constraint(
-									{
-										ident: params[0],
-										value: "'x99-999-999'",
-										funcName: funcName,
-										kind: "string",
-										operator : child.operator,
-										expression: expression
-									}));
-						}
-					}
-					
-
 				}
 
 
@@ -535,7 +506,7 @@ function constraints(filePath)
 									functionConstraints[funcName].constraints.push(
 										new Constraint(
 											{
-												ident: "dir",
+												ident: "directory",
 												value:  "'path/fileExists'",
 												funcName: funcName,
 												kind: "fileExists",
@@ -546,7 +517,6 @@ function constraints(filePath)
 										new Constraint(
 											{
 												ident: "filePath",
-												// A fake path to a file
 												value:  "'path/filenotExist'",
 												funcName: funcName,
 												kind: "fileWithContent",
