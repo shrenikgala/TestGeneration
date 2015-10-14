@@ -516,3 +516,5 @@ subject.format('','',{"normalize": true});
 subject.format('','',{"normalize": false});
 subject.format('','','');
 subject.blackListNumber('');
+subject.blackListNumber('212-999-9999');
+subject.blackListNumber('x99-999-999');
